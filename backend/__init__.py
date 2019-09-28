@@ -26,6 +26,7 @@ def hello():
     cur.execute("SELECT UPPER_LIMIT FROM LIMITS WHERE ACCOUNT_ID=?",('100000004512', ))
     limit = cur.fetchone()[0]
     resp = {"msg": f"Hi. There's scope to increase your credit limit till {limit}, how much you want it to be?"}
+    conn.close()
     return jsonify(resp)
 
 @app.route("/messagehandler", methods=['POST'])
@@ -57,3 +58,15 @@ def messagehandler():
 
     conn.close()
     return jsonify(resp)
+
+@app.route("/update", methods=['GET'])
+@cross_origin()
+def update():
+    conn = create_connection('/Users/PranayReddy/Desktop/scratchpad/paylimits/backend/limits.db')
+    cur = conn.cursor()
+    account_id = str(request.args.get('account_id'))
+    new_upper_limit = int(request.args.get('upper_limit'))
+    cur.execute("UPDATE LIMITS SET UPPER_LIMIT=? WHERE ACCOUNT_ID=?",(new_upper_limit, account_id))
+    conn.commit()
+    conn.close()
+    return "Update successful"

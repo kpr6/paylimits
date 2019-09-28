@@ -21,7 +21,11 @@ def create_connection(db_file):
 @app.route("/")
 @cross_origin()
 def hello():
-    resp = {"msg": "Hi. Welcome to HSBC. There's scope to increase your transaction limits, wanna proceed?"}
+    conn = create_connection('/Users/PranayReddy/Desktop/scratchpad/paylimits/backend/limits.db')
+    cur = conn.cursor()
+    cur.execute("SELECT UPPER_LIMIT FROM LIMITS WHERE ACCOUNT_ID=?",('100000004512', ))
+    limit = cur.fetchone()[0]
+    resp = {"msg": f"Hi. There's scope to increase your credit limit till {limit}, how much you want it to be?"}
     return jsonify(resp)
 
 @app.route("/messagehandler", methods=['POST'])
@@ -38,7 +42,7 @@ def messagehandler():
     print(content['msg']['data']['text'])
     if message == 'yes':
         resp = {"msg": "Thank You. Your limit has been revised to 15,000"}
-    elif re.search(".+increase.+", message):
+    elif re.search(".+(decrease|increase).+", message):
         req_limit = re.findall('\d+',message)
         req_limit = list(map(int, req_limit))
         print(req_limit, limit)
@@ -50,4 +54,6 @@ def messagehandler():
             resp = {"msg": "Your request has been received, we'll get back to you"}
     else:
         resp = {"msg": "Okay. Thank You."}  
+
+    conn.close()
     return jsonify(resp)

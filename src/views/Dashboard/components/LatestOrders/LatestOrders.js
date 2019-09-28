@@ -63,16 +63,16 @@ const LatestOrders = props => {
       className={clsx(classes.root, className)}
     >
       <CardHeader
-        action={
-          <Button
-            color="primary"
-            size="small"
-            variant="outlined"
-          >
-            New entry
-          </Button>
-        }
-        title="Latest Orders"
+        // action={
+        //   <Button
+        //     color="primary"
+        //     size="small"
+        //     variant="outlined"
+        //   >
+        //     New entry
+        //   </Button>
+        // }
+        title="Latest transactions"
       />
       <Divider />
       <CardContent className={classes.content}>
@@ -82,7 +82,7 @@ const LatestOrders = props => {
               <TableHead>
                 <TableRow>
                   <TableCell>Order Ref</TableCell>
-                  <TableCell>Customer</TableCell>
+                  <TableCell>Name</TableCell>
                   <TableCell sortDirection="desc">
                     <Tooltip
                       enterDelay={300}
@@ -96,6 +96,8 @@ const LatestOrders = props => {
                       </TableSortLabel>
                     </Tooltip>
                   </TableCell>
+
+                  <TableCell>Amount</TableCell>
                   <TableCell>Status</TableCell>
                 </TableRow>
               </TableHead>
@@ -110,6 +112,7 @@ const LatestOrders = props => {
                     <TableCell>
                       {moment(order.createdAt).format('DD/MM/YYYY')}
                     </TableCell>
+                    <TableCell>{order.amount}</TableCell>
                     <TableCell>
                       <div className={classes.statusContainer}>
                         <StatusBullet

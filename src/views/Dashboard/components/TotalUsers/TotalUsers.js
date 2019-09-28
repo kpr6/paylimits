@@ -62,7 +62,7 @@ const TotalUsers = props => {
               gutterBottom
               variant="body2"
             >
-              TOTAL USERS
+              ADVANCE PLATINUM
             </Typography>
             <Typography variant="h3">1,600</Typography>
           </Grid>
@@ -84,7 +84,7 @@ const TotalUsers = props => {
             className={classes.caption}
             variant="caption"
           >
-            Since last month
+            Increased spending since last month
           </Typography>
         </div>
       </CardContent>

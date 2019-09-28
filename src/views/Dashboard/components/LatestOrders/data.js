@@ -4,7 +4,7 @@ export default [
   {
     id: uuid(),
     ref: 'CDD1049',
-    amount: 30.5,
+    amount: -30.5,
     customer: {
       name: 'Ekaterina Tankova'
     },
@@ -14,7 +14,7 @@ export default [
   {
     id: uuid(),
     ref: 'CDD1048',
-    amount: 25.1,
+    amount: +25.1,
     customer: {
       name: 'Cao Yu'
     },
@@ -34,7 +34,7 @@ export default [
   {
     id: uuid(),
     ref: 'CDD1046',
-    amount: 96.43,
+    amount: -96.43,
     customer: {
       name: 'Anje Keizer'
     },
@@ -44,7 +44,7 @@ export default [
   {
     id: uuid(),
     ref: 'CDD1045',
-    amount: 32.54,
+    amount: +32.54,
     customer: {
       name: 'Clarke Gillebert'
     },
@@ -54,7 +54,7 @@ export default [
   {
     id: uuid(),
     ref: 'CDD1044',
-    amount: 16.76,
+    amount: +16.76,
     customer: {
       name: 'Adam Denisov'
     },

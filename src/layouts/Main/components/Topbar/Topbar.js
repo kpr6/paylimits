@@ -35,8 +35,10 @@ const Topbar = props => {
       <Toolbar>
         <RouterLink to="/">
           <img
+            width="100"
+            height="25"
             alt="Logo"
-            src="/images/logos/logo--white.svg"
+            src="/images/logos/hsbc.png"
           />
         </RouterLink>
         <div className={classes.flexGrow} />
